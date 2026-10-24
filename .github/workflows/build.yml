@@ -1,8 +1,9 @@
-name: Build Debug APK
+Name: Build Debug APK
 
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,6 +18,9 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '17'
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
 
     - name: Fix line endings and permissions
       run: |
